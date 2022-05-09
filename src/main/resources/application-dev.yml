@@ -3,3 +3,6 @@ spring:
     import: optional:file:.env.dev[.properties]
 reggie:
   path: /Users/gnaixeuy/Desktop/java/ruiji-TakeOut/ruiji-TakeOut/src/main/resources/static/images/
+aliyun:
+  secret: ${ALIYUN_SECRET}
+  accessKeyId: ${ALIYUN_ACCESSKEYID}}
