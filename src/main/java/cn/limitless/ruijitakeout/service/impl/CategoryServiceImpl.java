@@ -7,7 +7,7 @@ import cn.limitless.ruijitakeout.entity.SetMeal;
 import cn.limitless.ruijitakeout.exception.CustomException;
 import cn.limitless.ruijitakeout.service.CategoryService;
 import cn.limitless.ruijitakeout.service.DishService;
-import cn.limitless.ruijitakeout.service.SetmealService;
+import cn.limitless.ruijitakeout.service.SetMealService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import org.springframework.stereotype.Service;
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, Category> implements CategoryService {
 
     private DishService dishService;
-    private SetmealService setmealService;
+    private SetMealService setMealService;
 
     /**
      * 根据id删除分类，删除之前需要进行判断
@@ -49,7 +49,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, Category> impl
         LambdaQueryWrapper<SetMeal> setmealLambdaQueryWrapper = new LambdaQueryWrapper<>();
         //添加查询条件，根据分类id进行查询
         setmealLambdaQueryWrapper.eq(SetMeal::getCategoryId, id);
-        long count2 = setmealService.count();
+        long count2 = setMealService.count();
         if (count2 > 0) {
             //已经关联套餐，抛出一个业务异常
             throw new CustomException("当前分类下关联了套餐，不能删除");
@@ -65,7 +65,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, Category> impl
     }
 
     @Autowired
-    public void setSetmealService(SetmealService setmealService) {
-        this.setmealService = setmealService;
+    public void setSetMealService(SetMealService setMealService) {
+        this.setMealService = setMealService;
     }
 }
