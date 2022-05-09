@@ -70,7 +70,6 @@ public class CategoryController {
     public Result<String> delete(Long id) {
         log.info("删除分类，id为：{}", id);
         categoryService.remove(id);
-
         return Result.success("分类信息删除成功");
     }
 

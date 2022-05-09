@@ -1,3 +1,5 @@
 spring:
   config:
     import: optional:file:.env.dev[.properties]
+reggie:
+  path: /Users/gnaixeuy/Desktop/java/ruiji-TakeOut/ruiji-TakeOut/src/main/resources/static/backend/images
