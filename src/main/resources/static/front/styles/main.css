@@ -34,11 +34,9 @@
     box-sizing: border-box;
     padding: 14rem 0 0 8rem;
 }
-
 #main .divTitle .divStatic {
     display: flex;
 }
-
 #main .divTitle .divStatic .logo {
     width: 39rem;
     height: 39rem;
@@ -331,7 +329,6 @@
     color: white;
     background: #d8d8d8;
 }
-
 #main .divCart .btnSubmitActive {
     color: #333333;
     background: #ffc200;
@@ -517,7 +514,6 @@
     text-align: left;
     color: #333333;
 }
-
 #main .dialogCart .divCartTitle i {
     margin-right: 3rem;
     font-size: 15rem;
