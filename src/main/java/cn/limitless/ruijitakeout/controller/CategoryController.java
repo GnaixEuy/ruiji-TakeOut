@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <img src="http://blog.GnaixEuy.cn/wp-content/uploads/2021/08/bug.jpeg"/>
  *
@@ -47,7 +49,7 @@ public class CategoryController {
      * @return
      */
     @GetMapping("/page")
-    public Result<Page> page(int page, int pageSize) {
+    public Result<Page<Category>> page(int page, int pageSize) {
         //分页构造器
         Page<Category> pageInfo = new Page<>(page, pageSize);
         //条件构造器
@@ -69,7 +71,10 @@ public class CategoryController {
     @DeleteMapping
     public Result<String> delete(Long id) {
         log.info("删除分类，id为：{}", id);
+
+        //categoryService.removeById(id);
         categoryService.remove(id);
+
         return Result.success("分类信息删除成功");
     }
 
@@ -86,6 +91,25 @@ public class CategoryController {
         categoryService.updateById(category);
 
         return Result.success("修改分类信息成功");
+    }
+
+    /**
+     * 根据条件查询分类数据
+     *
+     * @param category
+     * @return
+     */
+    @GetMapping("/list")
+    public Result<List<Category>> list(Category category) {
+        //条件构造器
+        LambdaQueryWrapper<Category> queryWrapper = new LambdaQueryWrapper<>();
+        //添加条件
+        queryWrapper.eq(category.getType() != null, Category::getType, category.getType());
+        //添加排序条件
+        queryWrapper.orderByAsc(Category::getSort).orderByDesc(Category::getUpdateTime);
+
+        List<Category> list = categoryService.list(queryWrapper);
+        return Result.success(list);
     }
 
     @Autowired

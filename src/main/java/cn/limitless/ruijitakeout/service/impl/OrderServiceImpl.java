@@ -83,7 +83,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Orders> implements O
             orderDetail.setNumber(item.getNumber());
             orderDetail.setDishFlavor(item.getDishFlavor());
             orderDetail.setDishId(item.getDishId());
-            orderDetail.setSetmealId(item.getSetmealId());
+            orderDetail.setSetmealId(item.getSetMealId());
             orderDetail.setName(item.getName());
             orderDetail.setImage(item.getImage());
             orderDetail.setAmount(item.getAmount());
